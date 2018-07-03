@@ -34,7 +34,10 @@ def make_bond_conf(bond_info):
     for dev in interfaces:
         interface_content= '''TYPE=Ethernet
 DEVICE={0}
+<<<<<<< HEAD
 NAME={0}
+=======
+>>>>>>> 5ca02b04d2608f330de1577d8ff16a5e223ed050
 BOOTPROTO=none
 MASTER={1}
 SLAVE=yes
@@ -45,12 +48,19 @@ ONBOOT=yes'''.format(dev, bond_info['BONDNAME'])
             f.write(interface_content)
 
     bond = bond_info['BONDNAME']
+<<<<<<< HEAD
     bond_content = '''TYPE=bond
+=======
+    bond_content = '''TYPE=Ethernet
+>>>>>>> 5ca02b04d2608f330de1577d8ff16a5e223ed050
 NAME={0}
 DEVICE={0}
 ONBOOT=yes
 NM_CONTROLLED=no
+<<<<<<< HEAD
 USERCTL=no
+=======
+>>>>>>> 5ca02b04d2608f330de1577d8ff16a5e223ed050
 BOOTPROTO=none
 BONDING_MASTER=yes
 BONDING_OPTS="mode={1} miimon=100"
@@ -59,17 +69,26 @@ BONDING_OPTS="mode={1} miimon=100"
     with open(cfg, 'w') as f:
         f.write(bond_content)
 
+<<<<<<< HEAD
     if not bond_info['VLAN']:
         return
 
     bond_vlan = bond_info['BONDNAME'] + '.' + bond_info['VLAN']
     bond_vlan_content = '''NAME={0}
+=======
+    bond_vlan = bond_info['BONDNAME'] + '.' + bond_info['VLAN']
+    bond_vlan_content = '''TYPE=Ethernet
+NAME={0}
+>>>>>>> 5ca02b04d2608f330de1577d8ff16a5e223ed050
 DEVICE={0}
 BOOTPROTO=none
 IPADDR={1}
 NETMASK={2}
 NM_CONTROLLED=no
+<<<<<<< HEAD
 ONPARENT=yes
+=======
+>>>>>>> 5ca02b04d2608f330de1577d8ff16a5e223ed050
 ONBOOT=yes
 VLAN=yes'''.format(bond_vlan, bond_info['IP'], bond_info['NETMASK'])
     
