@@ -36,7 +36,7 @@ def write_cobber_profile(profile_path):
         f.write('#! /usr/bin/bash\n')
         for profile in cobbler_profile_list:
             f.write(profile + '\n')
-        f.write('cobber sync \n')
+        f.write('cobbler sync \n')
     os.chmod(profile_path, stat.S_IRWXU)
 
 
